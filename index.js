@@ -4,30 +4,36 @@ const app = express()
 app.use(express.json())
 
 let persons = [
-    {
-        "id": "1",
-        "name": "Arto Hellas",
-        "number": "040-123456"
-    },
-    {
-        "id": "2",
-        "name": "Ada Lovelace",
-        "number": "39-44-5323523"
-    },
-    {
-        "id": "3",
-        "name": "Dan Abramov",
-        "number": "12-43-234345"
-    },
-    {
-        "id": "4",
-        "name": "Mary Poppendieck",
-        "number": "39-23-6423122"
-    }
+  {
+    "id": "1",
+    "name": "Arto Hellas",
+    "number": "040-123456"
+  },
+  {
+    "id": "2",
+    "name": "Ada Lovelace",
+    "number": "39-44-5323523"
+  },
+  {
+    "id": "3",
+    "name": "Dan Abramov",
+    "number": "12-43-234345"
+  },
+  {
+    "id": "4",
+    "name": "Mary Poppendieck",
+    "number": "39-23-6423122"
+  },
+  {
+    "id": "5",
+    "name": "Delete Test",
+    "number": "604-any-time"
+  }
+
 ]
 
-app.get('/api/info', (request,response)=>{
-  const currentDate=new Date()
+app.get('/api/info', (request, response) => {
+  const currentDate = new Date()
   response.send(`<h2> Phonebook has info for ${persons.length} people</h2>
   <h2>${currentDate}</h2>`)
 })
