@@ -26,9 +26,15 @@ let persons = [
     }
 ]
 
-app.get('/api/info', (request, response) => {
-  response.send(`<h1>phonebook has info for 2 people</h1> <p> current date </p>`)
+app.get('/api/info', (request,response)=>{
+  const currentDate=new Date()
+  response.send(`<h2> Phonebook has info for ${persons.length} people</h2>
+  <h2>${currentDate}</h2>`)
 })
+
+// app.get('/api/info', (request, response) => {
+//   response.send(`<h1>phonebook has info for 2 people</h1> <p> current date </p>`)
+// })
 
 // phonebook has info for 2 people
 // current date
