@@ -1,7 +1,3 @@
-
-
-
-
 const express = require('express')
 const app = express()
 
@@ -29,6 +25,13 @@ let persons = [
         "number": "39-23-6423122"
     }
 ]
+
+app.get('/api/info', (request, response) => {
+  response.send(`<h1>phonebook has info for 2 people</h1> <p> current date </p>`)
+})
+
+// phonebook has info for 2 people
+// current date
 
 app.get('/api/persons/:id', (request, response) => {
   const id = request.params.id
