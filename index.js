@@ -59,6 +59,8 @@ app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
 
+
+
 app.post('/api/persons', (request, response) => {
   const note = request.body
   console.log(note)
@@ -85,9 +87,19 @@ app.post('/api/persons', (request, response) => {
   response.json(note)
 })
 
+//=======
+
+// "id": "5",
+// "name": "Delete Test",
+// "number": "604-any-time"
+
+// Math.floor(Math.random() * 30) + 1
+
+//=======
+
 const generateId = () => {
   const maxId = persons.length > 0
-    ? Math.max(...persons.map(n => Number(n.id)))
+    ? Math.max(...persons.map(n => Number(n.Math.floor(Math.random(id) * 30) + 1)))
     : 0
   return String(maxId + 1)
 }
