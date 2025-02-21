@@ -75,17 +75,17 @@ app.delete('/api/persons/:id', (request, response) => {
 })
 
 app.post('/api/persons', (request, response) => {
-  const maxId = persons.length > 0
-    ? Math.max(...persons.map(n => Number(n.id)))
-    : 0
+  const newId = Math.floor(Math.random() * 10000)
 
   const note = request.body
-  note.id = String(maxId + 1)
+
+  note.id = String(newId)
 
   persons = persons.concat(note)
 
   response.json(note)
 })
+
 
 //=======
 
@@ -99,7 +99,7 @@ app.post('/api/persons', (request, response) => {
 
 const generateId = () => {
   const maxId = persons.length > 0
-    ? Math.max(...persons.map(n => Number(n.Math.floor(Math.random(id) * 30) + 1)))
+    ? Math.floor(Math.random(Math.max(...persons.map(n => Number(n.id)))) * 30) + 1
     : 0
   return String(maxId + 1)
 }
