@@ -86,23 +86,24 @@ app.post('/api/persons', (request, response) => {
   response.json(note)
 })
 
-app.post('/api/persons', (request, response) => { // transforms it into a JavaScript object 
-  const note = request.body // and then attaches it to the body property of the request
-  console.log(note) // application does not do anything with the received data besides printing it to the console and sending it back in the response
-  response.json(note) // 
-})
 
-app.post('/api/persons', (request, response) => {
-  const newId = Math.floor(Math.random() * 10000)
+// app.post('/api/persons', (request, response) => { // transforms it into a JavaScript object 
+//   const note = request.body // and then attaches it to the body property of the request
+//   console.log(note) // application does not do anything with the received data besides printing it to the console and sending it back in the response
+//   response.json(note) // 
+// })
 
-  const note = request.body
+// app.post('/api/persons', (request, response) => {
+//   const newId = Math.floor(Math.random() * 10000)
 
-  note.id = String(newId)
+//   const note = request.body
 
-  persons = persons.concat(note)
+//   note.id = String(newId)
 
-  response.json(note)
-})
+//   persons = persons.concat(note)
+
+//   response.json(note)
+// })
 
 //=======
 
