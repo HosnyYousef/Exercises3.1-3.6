@@ -38,13 +38,6 @@ app.get('/api/info', (request, response) => {
   <h2>${currentDate}</h2>`)
 })
 
-// app.get('/api/info', (request, response) => {
-//   response.send(`<h1>phonebook has info for 2 people</h1> <p> current date </p>`)
-// })
-
-// phonebook has info for 2 people
-// current date
-
 app.get('/api/persons/:id', (request, response) => {
   const id = request.params.id
   const note = persons.find(note => note.id === id)
@@ -59,13 +52,12 @@ app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
 
-
-
-// app.post('/api/persons', (request, response) => {
-//   const note = request.body
-//   console.log(note)
-//   response.json(note)
+// app.get('/api/info', (request, response) => {
+//   response.send(`<h1>phonebook has info for 2 people</h1> <p> current date </p>`)
 // })
+
+// phonebook has info for 2 people
+// current date
 
 app.delete('/api/persons/:id', (request, response) => {
   const id = request.params.id
@@ -73,19 +65,6 @@ app.delete('/api/persons/:id', (request, response) => {
 
   response.status(204).end()
 })
-
-// app.post('/api/persons', (request, response) => {
-//   const newId = Math.floor(Math.random() * 10000)
-
-//   const note = request.body
-
-//   note.id = String(newId)
-
-//   persons = persons.concat(note)
-
-//   response.json(note)
-// })
-
 
 const generateId = () => {
   const maxId = persons.length > 0
@@ -96,17 +75,16 @@ const generateId = () => {
 
 app.post('/api/persons', (request, response) => {
   const body = request.body
-
   const newId = Math.floor(Math.random() * 10000)
-
   const note = request.body
-
   note.id = String(newId)
 
-  persons.push(note)
+  // persons.push(note) // changed from persons = persons.concat(note)
+  persons = persons.concat(note)
 
   response.json(note)
-  
+  console.log(note)
+
   if (!body.content) {
     return response.status(400).json({
       error: 'content missing'
@@ -120,8 +98,8 @@ app.post('/api/persons', (request, response) => {
   }
 
   persons = persons.concat(note)
-
   response.json(note)
+
 })
 
 const PORT = 3001
