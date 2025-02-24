@@ -61,11 +61,11 @@ app.get('/api/persons', (request, response) => {
 
 
 
-app.post('/api/persons', (request, response) => {
-  const note = request.body
-  console.log(note)
-  response.json(note)
-})
+// app.post('/api/persons', (request, response) => {
+//   const note = request.body
+//   console.log(note)
+//   response.json(note)
+// })
 
 app.delete('/api/persons/:id', (request, response) => {
   const id = request.params.id
@@ -73,25 +73,6 @@ app.delete('/api/persons/:id', (request, response) => {
 
   response.status(204).end()
 })
-
-app.post('/api/persons', (request, response) => {
-  const newId = Math.floor(Math.random() * 10000)
-
-  const note = request.body
-
-  note.id = String(newId)
-
-  persons = persons.concat(note)
-
-  response.json(note)
-})
-
-
-// app.post('/api/persons', (request, response) => { // transforms it into a JavaScript object 
-//   const note = request.body // and then attaches it to the body property of the request
-//   console.log(note) // application does not do anything with the received data besides printing it to the console and sending it back in the response
-//   response.json(note) // 
-// })
 
 // app.post('/api/persons', (request, response) => {
 //   const newId = Math.floor(Math.random() * 10000)
@@ -105,15 +86,6 @@ app.post('/api/persons', (request, response) => {
 //   response.json(note)
 // })
 
-//=======
-
-// "id": "5",
-// "name": "Delete Test",
-// "number": "604-any-time"
-
-// Math.floor(Math.random() * 30) + 1
-
-//=======
 
 const generateId = () => {
   const maxId = persons.length > 0
@@ -125,13 +97,23 @@ const generateId = () => {
 app.post('/api/persons', (request, response) => {
   const body = request.body
 
+  const newId = Math.floor(Math.random() * 10000)
+
+  const note = request.body
+
+  note.id = String(newId)
+
+  persons.push(note)
+
+  response.json(note)
+  
   if (!body.content) {
     return response.status(400).json({
       error: 'content missing'
     })
   }
 
-  const note = {
+   note = {
     content: body.content,
     important: Boolean(body.important) || false,
     id: generateId(),
