@@ -32,6 +32,7 @@ let persons = [
 
 ]
 
+
 app.get('/api/info', (request, response) => {
   const currentDate = new Date()
   response.send(`<h2> Phonebook has info for ${persons.length} people</h2>
@@ -66,12 +67,6 @@ app.delete('/api/persons/:id', (request, response) => {
   response.status(204).end()
 })
 
-const generateId = () => {
-  const maxId = persons.length > 0
-    ? Math.floor(Math.random(Math.max(...persons.map(n => Number(n.id)))) * 30) + 1
-    : 0
-  return String(maxId + 1)
-}
 
 app.post('/api/persons', (request, response) => {
   const body = request.body
@@ -79,11 +74,11 @@ app.post('/api/persons', (request, response) => {
   const note = request.body
   note.id = String(newId)
 
-  // persons.push(note) // changed from persons = persons.concat(note)
-  persons = persons.concat(note)
+  persons = persons.push(note) // changed from persons = persons.concat(note)
 
   response.json(note)
   console.log(note)
+  console.log(request.headers)
 
   if (!body.content) {
     return response.status(400).json({
@@ -97,12 +92,21 @@ app.post('/api/persons', (request, response) => {
     id: generateId(),
   }
 
-  persons = persons.concat(note)
   response.json(note)
 
 })
+
+const generateId = () => {
+  const maxId = persons.length > 0
+    ? Math.floor(Math.random(Math.max(...persons.map(n => Number(n.id)))) * 30) + 1
+    : 0
+  return String(maxId + 1)
+}
+
+
 
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
+
