@@ -29,9 +29,7 @@ let persons = [
     "name": "Delete Test",
     "number": "604-any-time"
   }
-
 ]
-
 
 app.get('/api/info', (request, response) => {
   const currentDate = new Date()
@@ -67,14 +65,13 @@ app.delete('/api/persons/:id', (request, response) => {
   response.status(204).end()
 })
 
-
 app.post('/api/persons', (request, response) => {
   const body = request.body
   const newId = Math.floor(Math.random() * 10000)
-  const note = request.body
-  note.id = String(newId)
+  let note = request.body
+  // note.id = String(newId)
 
-  persons = persons.push(note) // changed from persons = persons.concat(note)
+  persons.push(note) // changed from persons = persons.concat(note)
 
   response.json(note)
   console.log(note)
@@ -102,8 +99,6 @@ const generateId = () => {
     : 0
   return String(maxId + 1)
 }
-
-
 
 const PORT = 3001
 app.listen(PORT, () => {
