@@ -66,30 +66,25 @@ app.delete('/api/persons/:id', (request, response) => {
 })
 
 app.post('/api/persons', (request, response) => {
-  const body = request.body
-  const newId = Math.floor(Math.random() * 10000)
-  let note = request.body
-  // note.id = String(newId)
+  //const body = request.body
 
-if (!note) 
+  let note = request.body   // was const
 
-  persons.push(note) // changed from persons = persons.concat(note)
-
-  // response.json(note)
   console.log(note)
   console.log(request.headers)
 
-  if (!body.content) {
+  if (!note || Object.keys(note).length === 0) {
     return response.status(400).json({
       error: 'content missing'
     })
   }
 
-   note = {
-    content: body.content,
-    important: Boolean(body.important) || false,
-    id: generateId(),
-  }
+
+
+  const newId = Math.floor(Math.random() * 10000)
+  note = { ...note, id: newId.toString() }
+
+  persons.push(note) // changed from persons = persons.concat(note)
 
   response.json(note)
 
