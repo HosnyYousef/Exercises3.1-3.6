@@ -71,9 +71,11 @@ app.post('/api/persons', (request, response) => {
   let note = request.body
   // note.id = String(newId)
 
+if (!note) 
+
   persons.push(note) // changed from persons = persons.concat(note)
 
-  response.json(note)
+  // response.json(note)
   console.log(note)
   console.log(request.headers)
 
