@@ -31,6 +31,28 @@ let persons = [
   }
 ]
 
+// postman raw input example:
+  // { "name":"Fred", "number":"526-7890"}
+    // { "name":"Mary Poppendieck", "number":"526-7890"}
+
+//  The name already exists in the phonebook
+persons.forEach(function(name) {
+  if (persons.name == name) {
+    return response.status(400).json({
+      error: 'name must be unique'
+    })
+  }
+})
+
+//  The name or number is missing
+  persons.forEach(function(name) {
+    if (persons.name == !name || persons.number == "") {
+      return response.status(400).json({
+        error: 'name or number is missing'
+      })
+    }
+  })
+
 app.get('/api/info', (request, response) => {
   const currentDate = new Date()
   response.send(`<h2> Phonebook has info for ${persons.length} people</h2>
@@ -78,6 +100,8 @@ app.post('/api/persons', (request, response) => {
       error: 'content missing'
     })
   }
+
+
 
   const newId = Math.floor(Math.random() * 10000)
   note = { ...note, id: newId.toString() }
