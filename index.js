@@ -79,8 +79,6 @@ app.post('/api/persons', (request, response) => {
     })
   }
 
-
-
   const newId = Math.floor(Math.random() * 10000)
   note = { ...note, id: newId.toString() }
 
