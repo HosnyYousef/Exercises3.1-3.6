@@ -32,8 +32,8 @@ let persons = [
 ]
 
 // postman raw input example:
-  // { "name":"Fred", "number":"526-7890"}
-  // { "name":"Mary Poppendieck", "number":"526-7890"}
+// { "name":"Fred", "number":"526-7890"}
+// { "name":"Mary Poppendieck", "number":"526-7890"}
 
 // if (persons.filter((b, i, { [i - 1]: a }) => a?.name !== b.name)){
 //   return response.status(400).json({
@@ -41,36 +41,39 @@ let persons = [
 //   })
 // }
 
-app.post('/api/persons/:name', (request, response) => {
-  const name = request.params.name
-  const note = persons.find(note => note.name === name)
-  if (note) {
-    response.json(note)
-  } else {
-    response.status(400).json({
-      error: 'name must be unique'
-    })  
-  }
-})
-
-
-//  The name already exists in the phonebook
-// persons.forEach(function(name) {
-//   if (persons.name == name) {
-//     return response.status(400).json({
+// app.post('/api/persons/:name', (request, response) => {
+//   const name = request.params.name
+//   const note = persons.find(note => note.name === name)
+//   if (note) {
+//     response.json(note)
+//   } else {
+//     response.status(400).json({
 //       error: 'name must be unique'
 //     })
 //   }
 // })
 
+
+// The name already exists in the phonebook
+app.post('/api/persons/:name', (request, response) => {
+  const names = request.params.name
+  persons.forEach(name => {
+    if ((persons.name === name)) {
+      return response.status(400).json({
+        error: 'name must be unique'
+      })
+    }
+  })
+})
+
 // The name or number is missing
-  // persons.forEach(function(name) {
-  //   if (persons.name == !name || persons.number == "") {
-  //     return response.status(400).json({
-  //       error: 'name or number is missing'
-  //     })
-  //   }
-  // })
+// persons.forEach(function(name) {
+//   if (persons.name == !name || persons.number == "") {
+//     return response.status(400).json({
+//       error: 'name or number is missing'
+//     })
+//   }
+// })
 
 app.get('/api/info', (request, response) => {
   const currentDate = new Date()
