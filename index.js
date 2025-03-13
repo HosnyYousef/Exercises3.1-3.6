@@ -67,7 +67,7 @@ app.post('/api/persons/:name', (request, response) => {
 })
 
 // The name or number is missing
-persons.forEach(function(name) {
+persons.forEach(function (name) {
   if (persons.name == !name || persons.number == "") {
     return response.status(400).json({
       error: 'name or number is missing'
@@ -124,6 +124,23 @@ app.post('/api/persons', (request, response) => {
   }
 
 
+
+
+  // check if name or number is missing
+  if (!note.name || !note.number) {
+    return response.status(400).json({
+      error: 'name or number is missing'
+    })
+  }
+
+
+  // check if name already exists in the phonebook
+  if (persons.find(p => p.name === note.name)) {    // note: does not cater for case-sensitivity, so need to add that
+    return response.status(400).json({
+      error: 'name must be unique'
+    })
+
+  }
 
   const newId = Math.floor(Math.random() * 10000)
   note = { ...note, id: newId.toString() }
