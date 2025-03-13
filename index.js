@@ -67,13 +67,13 @@ app.post('/api/persons/:name', (request, response) => {
 })
 
 // The name or number is missing
-// persons.forEach(function(name) {
-//   if (persons.name == !name || persons.number == "") {
-//     return response.status(400).json({
-//       error: 'name or number is missing'
-//     })
-//   }
-// })
+persons.forEach(function(name) {
+  if (persons.name == !name || persons.number == "") {
+    return response.status(400).json({
+      error: 'name or number is missing'
+    })
+  }
+})
 
 app.get('/api/info', (request, response) => {
   const currentDate = new Date()
