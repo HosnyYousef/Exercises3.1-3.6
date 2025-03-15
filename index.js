@@ -1,12 +1,8 @@
 const express = require('express')
 const app = express()
-// const requre 
+const morgan = require('morgan')
 
 app.use(express.json())
-
-// morgan.token('body', (req) => JSON.stringify(req.body));
-
-// app.use(morgan(':url :method :body'))
 
 let persons = [
   {
@@ -58,6 +54,9 @@ let persons = [
 //   }
 // })
 
+morgan.token('type', function(req, res) {
+  return `${JSON.stringify(req.body)}`
+})
 
 // The name already exists in the phonebook
 app.post('/api/persons/:name', (request, response) => {
@@ -114,7 +113,7 @@ app.delete('/api/persons/:id', (request, response) => {
   response.status(204).end()
 })
 
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', morgan(':method :url :status :res[content-length] - :response-time ms :type'), (request, response) => {
   //const body = request.body
 
   let note = request.body   // was const
@@ -128,16 +127,12 @@ app.post('/api/persons', (request, response) => {
     })
   }
 
-
-
-
   // check if name or number is missing
   if (!note.name || !note.number) {
     return response.status(400).json({
       error: 'name or number is missing'
     })
   }
-
 
   // check if name already exists in the phonebook
   if (persons.find(p => p.name === note.name)) {    // note: does not cater for case-sensitivity, so need to add that
