@@ -32,29 +32,7 @@ let persons = [
   }
 ]
 
-// postman raw input example:
-// { "name":"Fred", "number":"526-7890"}
-// { "name":"Mary Poppendieck", "number":"526-7890"}
-
-// if (persons.filter((b, i, { [i - 1]: a }) => a?.name !== b.name)){
-//   return response.status(400).json({
-//     error: 'name must be unique'
-//   })
-// }
-
-// app.post('/api/persons/:name', (request, response) => {
-//   const name = request.params.name
-//   const note = persons.find(note => note.name === name)
-//   if (note) {
-//     response.json(note)
-//   } else {
-//     response.status(400).json({
-//       error: 'name must be unique'
-//     })
-//   }
-// })
-
-morgan.token('type', function(req, res) {
+morgan.token('type', function (req, res) {
   return `${JSON.stringify(req.body)}`
 })
 
@@ -99,13 +77,6 @@ app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
 
-// app.get('/api/info', (request, response) => {
-//   response.send(`<h1>phonebook has info for 2 people</h1> <p> current date </p>`)
-// })
-
-// phonebook has info for 2 people
-// current date
-
 app.delete('/api/persons/:id', (request, response) => {
   const id = request.params.id
   persons = persons.filter(note => note.id !== id)
@@ -114,9 +85,8 @@ app.delete('/api/persons/:id', (request, response) => {
 })
 
 app.post('/api/persons', morgan(':method :url :status :res[content-length] - :response-time ms :type'), (request, response) => {
-  //const body = request.body
 
-  let note = request.body   // was const
+  let note = request.body
 
   console.log(note)
   console.log(request.headers)
@@ -127,7 +97,6 @@ app.post('/api/persons', morgan(':method :url :status :res[content-length] - :re
     })
   }
 
-  // check if name or number is missing
   if (!note.name || !note.number) {
     return response.status(400).json({
       error: 'name or number is missing'
@@ -145,7 +114,7 @@ app.post('/api/persons', morgan(':method :url :status :res[content-length] - :re
   const newId = Math.floor(Math.random() * 10000)
   note = { ...note, id: newId.toString() }
 
-  persons.push(note) // changed from persons = persons.concat(note)
+  persons.push(note)
 
   response.json(note)
 
