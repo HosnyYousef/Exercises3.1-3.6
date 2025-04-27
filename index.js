@@ -1,8 +1,18 @@
-const express = require('express')
-const app = express()
+const express = require('express') // loads the Express library
+// require: pulls in code or functions from another file or package
+// 'express': the Express library we’re importing
+// 'const express': stores the Express library in a variable so we can use it
+const app = express() 
+// 'express()': runs Express to create a web server
+// 'const app': stores the Express app in a variable so we can add routes, middleware, etc.
 const morgan = require('morgan')
+// require: pulls in the morgan logging library
+// 'const morgan': stores it in a variable so we can use it in our app
+// Morgan logs details about each request (like the method, URL, and response time) to the console.
 
 app.use(express.json())
+// We parce json using express (that's within app)
+// .use is pulling middleware from the express library to use instead of manually inputing our own long and tedious middleware. It's like pulling tools from a library to use rather than typing them out
 
 let persons = [
   {
