@@ -1,9 +1,14 @@
 const express = require('express') 
-// purpose: access to express library to run servers and use middleware
-// 'const express': storing express in a variable to easily run it
-// 'require': accesss files or packages from different files
-// 'require('express')': pull from express library
-// 'const express = require('express')': 
+// purpose: access the express library to load servers and middleware (build and use)
+// 'const express': create variable to run express() ()
+// 'require': use files or packages from another file (LOAD)
+// 'require('express')': pull in the express library to use ()
+
+
+// purpose: access the express library to build servers and use middleware
+// 'const express': store the express library in a variable so we can use it easily
+// 'require': load code (files or packages) into our file
+// 'require('express')': pull in the express library
 
 const app = express() 
 // purpose: 

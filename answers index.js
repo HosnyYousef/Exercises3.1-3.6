@@ -104,6 +104,9 @@ app.post('/api/persons/:name', (request, response) => {
 // '.json': send the response back in JSON format
 // 'error:': the error message we send if the name is already taken
 
+//BOOKMARK
+
+
 persons.forEach(function (name) {
   if (persons.name == !name || persons.number == "") {
     return response.status(400).json({
