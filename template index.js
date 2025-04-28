@@ -1,6 +1,6 @@
 const express = require('express') 
-// purpose: access the express library so we can load servers and middleware
-// 'const' express': 
+// purpose: 
+// 'const express': 
 // 'require': 
 // 'require('express')': 
 // 'const express = require('express')': 
