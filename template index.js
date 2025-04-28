@@ -1,7 +1,6 @@
 const express = require('express') 
-// purpose: 
-// 'const': 
-// 'express': 
+// purpose: access the express library so we can load servers and middleware
+// 'const' express': 
 // 'require': 
 // 'require('express')': 
 // 'const express = require('express')': 
@@ -30,17 +29,14 @@ app.use(express.json())
 // '.use': 
 
 let persons = [
-  // Purpose: store a list of people (objects) inside an array called 'persons'
+  // Purpose: 
 {
-  // name of object positions: 'key' : 'value'. together they are called the 'property'
+  // name of object positions: 
   "id": "1", 
   "name": "Arto Hellas", 
   "number": "040-123456" 
 },
-    // // Purpose: represent one person's contact information inside the phonebook
-
-// For each object:
-// purpose:
+// Purpose: 
 // 'id': 
 // 'name': 
 // 'number': 

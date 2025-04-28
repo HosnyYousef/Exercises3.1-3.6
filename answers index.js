@@ -32,8 +32,7 @@ let persons = [
     "number": "040-123456" 
   },
 
-// For each object:
-// purpose:
+// purpose: represent one person's contact information inside the phonebook
 // 'id': - "id" is the person's unique ID
 // 'name': - "name" is the person's name
 // 'number': - "number" is the person's phone number
