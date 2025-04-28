@@ -3,11 +3,14 @@ const express = require('express')
 // 'require': pulls in code or functions from another file or package
 // 'express': the Express library we’re importing
 // 'const express': stores the Express library we accessed inside a variable so we can run it
+// What's a server? Server = request in, response out
 const app = express() 
 // Purpose: create a web server by running Express to set up routes, middleware, etc... (Handling errors, Connecting to a database, Serving static files (like images or CSS))
 // What's a web server: a program that listens for requests and sends back response
 // 'express()': runs Express to create a web server
 // 'const app': We give instructions to the app to tell it how to behave when someone makes a request
+// What does routing mean?: telling the server what to do when someone visits a specific URL e.g. app.get('/', (req, res) => {...}
+
 const morgan = require('morgan')
 // Purpose: Morgan logs details about each request (like the method, URL, and response time) to the console. e.g. 'GET /home 200 12ms'
 // require: pulls in the morgan logging library
@@ -24,12 +27,16 @@ let persons = [
     // Purpose: store a list of people (objects) inside an array called 'persons'
   {
     // name of positions: 'key' : 'value'. together they are called the 'property'
-    "id": "1", // - "id" is the person's unique ID
-    "name": "Arto Hellas", // - "name" is the person's name
-    "number": "040-123456" // - "number" is the person's phone number
+    "id": "1", 
+    "name": "Arto Hellas", 
+    "number": "040-123456" 
   },
-      // // Purpose: represent one person's contact information inside the phonebook
-          // Each object stores an id, name, and phone number for one person
+
+// For each object:
+// purpose:
+// 'id': - "id" is the person's unique ID
+// 'name': - "name" is the person's name
+// 'number': - "number" is the person's phone number
 
   {
     "id": "2",

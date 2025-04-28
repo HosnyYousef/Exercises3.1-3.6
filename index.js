@@ -1,18 +1,32 @@
-const express = require('express') // loads the Express library
-// require: pulls in code or functions from another file or package
-// 'express': the Express library we’re importing
-// 'const express': stores the Express library in a variable so we can use it
+const express = require('express') 
+// purpose: for us access the express library to run it
+// 'const express': constant, meaning we can't reassign variable, as aposed to 'let', which allows as to reassign variables. We're this variable express
+// 'require': a function that loads in a nother file or package
+// 'require('express')': loads express library for us to build servers and access middlewars
+// 'const express = require('express')': we're placing access to the express library into a varable to run it later
+// What's a server? Server = request in, response out
 const app = express() 
-// 'express()': runs Express to create a web server
-// 'const app': stores the Express app in a variable so we can add routes, middleware, etc.
-const morgan = require('morgan')
-// require: pulls in the morgan logging library
-// 'const morgan': stores it in a variable so we can use it in our app
-// Morgan logs details about each request (like the method, URL, and response time) to the console.
+// purpose: so we can run express, and place it in a variable
+// 'const app': express() is just started in variable app until it's used
+// 'express()':  running express, w the servers and middleware when we need them
+// What does routing mean?: telling the server what to do when someone visits a specific URL e.g. app.get('/', (req, res) => {...}
+
+// purpose: to run express and store it in a variable so we can build our server
+// 'const app': constant variable that holds our express app
+// 'express()': runs express; sets up the server and gives access to routing, middleware, etc.
+// 'express()': calls (runs) the express function to create an app we can control
+
+
+const morgan = require('morgan') 
+// purpose: 
+// 'const': 
+// 'morgan': 
+// 'require': 
+// 'require('morgan')': 
+// 'const morgan = require('morgan')': 
+
 
 app.use(express.json())
-// We parce json using express (that's within app)
-// .use is pulling middleware from the express library to use instead of manually inputing our own long and tedious middleware. It's like pulling tools from a library to use rather than typing them out
 
 let persons = [
   {
@@ -43,7 +57,16 @@ let persons = [
 ]
 
 morgan.token('type', function (req, res) {
+// purpose: 
+// 'morgan.token': 
+// 'type': 
+// 'function (req, res)': 
+// 'req': 
+// 'res': 
   return `${JSON.stringify(req.body)}`
+// purpose: 
+// 'return': 
+// 'JSON.stringify(req.body)': 
 })
 
 // The name already exists in the phonebook
